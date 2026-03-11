@@ -4,6 +4,12 @@ Ferramenta front-end para geração e exploração de paletas de cores com foco 
 
 ---
 
+<div align="center">
+  <a href="https://clickcolors.netlify.app/" target="_blank">
+    <img src="https://img.shields.io/badge/Acesse_o_Projeto_Online-000?style=for-the-badge&logo=vercel&logoColor=white" alt="Deploy Link">
+  </a>
+</div>
+
 ## ✨ Destaques do Projeto
 
 - **Design sofisticado:** fundo com gradiente animado, animações suaves e interface clean.
@@ -42,13 +48,7 @@ Ferramenta front-end para geração e exploração de paletas de cores com foco 
 
 ---
 
-## 🚀 Acesso e Execução
-
-### 1) Acesso online
-
-[ClickColor (Netlify)]((https://clickcolors.netlify.app/))
-
-### 2) Execução local
+### 1) Execução local
 
 1. Clone este repositório.
 2. Acesse a pasta do projeto.
@@ -75,5 +75,5 @@ Color _Generator/
 
 **Patrick Souza**
 
-- GitHub: 
-- LinkedIn: inserir link oficial do perfil
+- GitHub: [Acesse aqui](https://github.com/PatrickCaramico)
+- LinkedIn: [Acesse aqui](https://www.linkedin.com/in/patrickcaramico/)
