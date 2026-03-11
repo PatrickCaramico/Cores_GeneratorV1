@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/style.css?v=1.2" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -15,23 +15,18 @@
       rel="stylesheet"
     />
 
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- Title -->
-    <title>Projeto Gerador de Cores</title>
+    <title>ClickColor</title>
   </head>
   <body>
     <!-- Ilustração SVG topo -->
-    <div
-      class="svg-topo"
-      style="
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        margin-bottom: 1.5rem;
-      "
-    >
+    <div class="svg-topo">
       <svg
-        width="120"
-        height="120"
+        width="90"
+        height="90"
         viewBox="0 0 120 120"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -76,49 +71,149 @@
         </defs>
       </svg>
     </div>
-    <!-- Header - Inicio -->
+
+    <!-- Header -->
     <header class="header">
-      <h1 class="header__title">Gerador de Cores</h1>
+      <h1 class="header__title">ClickColor</h1>
 
       <p class="header__description">
-        Clique em "Gerar" para uma paleta aleatória. Clique em uma cor para ver
-        paletas sugeridas.
+        Gere paletas aleatórias ou baseadas em um HEX. Pressione
+        <kbd>Espaço</kbd> para gerar.
       </p>
 
-      <button class="button" id="gerar-btn">
-        <span class="button__icon">🎲</span> Gerar nova Paleta
-      </button>
+      <!-- Controles de geração -->
+      <div class="controls">
+        <!-- Dropdown de tipo -->
+        <div class="controls__tipo-wrap">
+          <label class="controls__label" for="tipo-paleta">Tipo:</label>
+          <select class="controls__select" id="tipo-paleta">
+            <option value="aleatoria">🎲 Aleatória</option>
+            <option value="hex">🎨 Baseada em HEX</option>
+          </select>
+        </div>
+
+        <!-- Input HEX (aparece só quando "Baseada em HEX" está selecionado) -->
+        <div class="controls__hex-wrap" id="hex-wrap" style="display: none">
+          <input
+            class="controls__hex-input"
+            type="text"
+            id="hex-input"
+            placeholder="#19A9E4"
+            maxlength="7"
+          />
+        </div>
+
+        <!-- Botão Gerar -->
+        <button class="button" id="gerar-btn">
+          <span class="button__icon">🎲</span> Gerar Paleta
+        </button>
+      </div>
+
+      <!-- Filtro de Daltonismo -->
+      <div class="controls controls--daltonismo">
+        <label class="controls__label" for="daltonismo-select"
+          >Simular daltonismo:</label
+        >
+        <select
+          class="controls__select controls__select--sm"
+          id="daltonismo-select"
+        >
+          <option value="none">Nenhum</option>
+          <option value="protanopia">Protanopia</option>
+          <option value="deuteranopia">Deuteranopia</option>
+          <option value="tritanopia">Tritanopia</option>
+          <option value="achromatopsia">Acromatopsia</option>
+        </select>
+      </div>
     </header>
 
-    <!-- Main - Inicio -->
+    <!-- Main -->
     <main class="main-content">
+      <!-- Paleta Principal -->
       <section class="section" id="paleta-aleatoria">
-        <h2 class="section__title">Paleta Aleatória</h2>
+        <h2 class="section__title" id="section-title-paleta">
+          Paleta Aleatória
+        </h2>
         <div class="pallete-container" id="paleta-container"></div>
       </section>
 
-      <section class="section section--hidden">
-        <div
-          class="pallete-related-container"
-          id="paleta-relacionadas-container"
-        ></div>
+      <!-- Preview em Mini Site -->
+      <section class="section preview-section" id="preview-section">
+        <h2 class="section__title">
+          Visualização em Site
+          <span class="preview-hint"
+            >← clique em uma cor da paleta para aplicar</span
+          >
+        </h2>
+        <div class="preview-site" id="preview-site">
+          <div class="preview-site__nav" id="preview-nav">
+            <span class="preview-site__logo">ClickColor</span>
+          </div>
+          <div class="preview-site__body">
+            <h3 class="preview-site__title" id="preview-title">
+              Título do site de exemplo
+            </h3>
+            <p class="preview-site__text">
+              Este é um parágrafo de exemplo para visualizar como a cor
+              escolhida fica no contexto real de um layout.
+            </p>
+            <button class="preview-site__btn" id="preview-btn">
+              Botão de Ação
+            </button>
+          </div>
+        </div>
+        <div class="preview-targets">
+          <span class="preview-target-label">Aplicar cor em:</span>
+          <button class="preview-target-btn active" data-target="nav">
+            Navbar
+          </button>
+          <button class="preview-target-btn" data-target="title">Título</button>
+          <button class="preview-target-btn" data-target="btn">Botão</button>
+        </div>
+      </section>
+
+      <!-- Histórico de Paletas -->
+      <section class="section historico-section" id="historico-section">
+        <h2 class="section__title">Paletas Recentes</h2>
+        <div class="historico-container" id="historico-container">
+          <p class="historico-vazio">Nenhuma paleta gerada ainda.</p>
+        </div>
       </section>
     </main>
 
-    <script src="assets/js/script.js"></script>
-  </body>
+    <!-- Modal para exibir cor selecionada, degradê e exportação -->
+    <div class="modal" id="color-modal">
+      <div class="modal__content">
+        <span class="modal__close" id="modal-close">&times;</span>
 
-  <!-- Modal para exibir cor selecionada e degradês -->
-  <div class="modal" id="color-modal">
-    <div class="modal__content">
-      <span class="modal__close" id="modal-close">&times;</span>
-      <div class="modal__selected-color" id="modal-selected-color"></div>
-      <div class="modal__selected-hex" id="modal-selected-hex"></div>
-      <h3 class="modal__degrade-title">Degradê da cor</h3>
-      <div class="modal__degrade-container" id="modal-degrade-container"></div>
+        <!-- Topo do modal: cor + info de contraste -->
+        <div class="modal__top">
+          <div class="modal__selected-color" id="modal-selected-color"></div>
+          <div class="modal__info">
+            <div class="modal__selected-hex" id="modal-selected-hex"></div>
+            <div class="modal__contrast-badge" id="modal-contrast-badge"></div>
+          </div>
+        </div>
+
+        <!-- Exportação de formatos -->
+        <div class="modal__export">
+          <h3 class="modal__export-title">Exportar Cor</h3>
+          <div class="modal__export-grid" id="modal-export-grid"></div>
+        </div>
+
+        <!-- Degradê -->
+        <h3 class="modal__degrade-title">Degradê da cor</h3>
+        <div
+          class="modal__degrade-container"
+          id="modal-degrade-container"
+        ></div>
+      </div>
     </div>
-  </div>
-  <footer class="footer-direitos">
-    Todos os direitos reservados Patrick Souza &copy; 2025
-  </footer>
+
+    <script src="assets/js/script.js?v=1.2"></script>
+
+    <footer class="footer-direitos">
+      Todos os direitos reservados Patrick Souza &copy; 2025 — ClickColor v1.2
+    </footer>
+  </body>
 </html>
