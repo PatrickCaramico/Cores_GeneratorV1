@@ -1,58 +1,79 @@
-### Projeto Gerador de Cores
+# ClickColor
 
-Este é um projeto de front-end dinâmico, criado para ser uma ferramenta elegante e funcional de exploração de cores. Ele permite gerar paletas aleatórias e, ao selecionar uma cor, exibe um modal interativo com o código hexadecimal e uma variação de degradê da mesma cor. O projeto foi desenvolvido com foco em uma experiência de usuário (UX) moderna e código limpo e organizado.
-
----
-
-### Destaques do Projeto
-
-* **Design Sofisticado:** A interface do usuário é aprimorada com um fundo de gradiente animado e animações de entrada que dão vida à página.
-* **Componente Modal Customizado:** Ao clicar em uma cor, um modal é exibido com detalhes da cor selecionada e uma série de tons de degradê gerados de forma programática.
-* **Geração de Degradê (Custom Function):** Diferente de uma API, a variação de tons de degradê é gerada por uma função própria, demonstrando o domínio da manipulação de cores em JavaScript.
-* **Usabilidade Aprimorada:** O botão de geração tem um design mais atraente, e a funcionalidade de copiar o código de cor em todos os cards do projeto é intuitiva e com feedback visual imediato.
-* **Estrutura de Arquivos Profissional:** O código é organizado em pastas (`assets/css`, `assets/js`) e utiliza classes semânticas, tornando o projeto escalável e fácil de ser mantido.
-* **SVG Integrado:** O projeto inclui um SVG estilizado que funciona como um ícone no topo da página, demonstrando a habilidade de trabalhar com gráficos vetoriais.
+Ferramenta front-end para geração e exploração de paletas de cores com foco em UX moderna, praticidade e apresentação profissional. O projeto permite gerar paletas aleatórias ou baseadas em código HEX, além de visualizar detalhes, exportar formatos e testar aplicação das cores em um mini preview de site.
 
 ---
 
-### Funcionalidades
+## ✨ Destaques do Projeto
 
-* **Geração de Paleta Aleatória:** Crie uma nova paleta com 5 cores únicas a qualquer momento.
-* **Visualização de Cores em Detalhes:** Clique em qualquer cor da paleta para abrir um modal com uma prévia maior da cor e suas variações em degradê.
-* **Cópia de Código:** Copie o código hexadecimal de qualquer cor, tanto na paleta principal quanto no modal, com apenas um clique.
-* **Responsividade:** O layout se adapta perfeitamente a dispositivos móveis, garantindo uma ótima experiência em qualquer tela.
-* **Rodapé Fixo:** Um rodapé informativo permanece visível, adicionando um toque final de profissionalismo.
-
----
-
-### Tecnologias e Conceitos
-
-* **HTML5:** Estrutura semântica da página.
-* **CSS3:** Estilização com animações (`@keyframes`), gradientes e uma arquitetura de classes organizada.
-* **JavaScript (ES6+):** Lógica dinâmica, manipulação do DOM, funções personalizadas de geração de cores e controle do modal.
-* **UX/UI:** Foco na experiência do usuário com feedback visual e interações claras.
+- **Design sofisticado:** fundo com gradiente animado, animações suaves e interface clean.
+- **Geração inteligente por HEX (HSL):** cria paletas harmônicas a partir de uma cor base usando variações de matiz.
+- **Modal interativo completo:** exibe cor selecionada, contraste WCAG, formatos de exportação e variações em degradê.
+- **Feedback visual de cópia:** integração com SweetAlert2 para confirmação de ações e melhor experiência do usuário.
+- **Estrutura organizada:** separação em `assets/css` e `assets/js`, facilitando manutenção e evolução.
+- **Acessibilidade e usabilidade:** análise de contraste, filtros de daltonismo e atalhos de interação.
 
 ---
 
-### 🚀 Acesso e Execução
+## ✅ Funcionalidades
 
-O projeto pode ser visualizado diretamente no navegador.
+- **Geração de paleta aleatória:** cria 5 cores com um clique.
+- **Geração baseada em HEX:** recebe uma cor base (`#RRGGBB`) e gera paleta análoga por HSL.
+- **Bloqueio de cores (lock):** mantém cores favoritas fixas enquanto o restante da paleta é regenerado.
+- **Atalho de teclado:** pressione **barra de espaço** para gerar nova paleta rapidamente.
+- **Histórico de paletas:** salva paletas recentes com `localStorage` e permite restaurar versões anteriores.
+- **Cópia de códigos:** copia HEX e formatos de exportação com feedback visual.
+- **Exportação de formatos:** HEX, RGB, HSL e CSS Variable.
+- **Preview de aplicação:** mini site para testar cor em navbar, título e botão.
+- **Análise de contraste:** indicação visual de contraste com padrão WCAG AA.
+- **Simulação de daltonismo:** opções como Protanopia, Deuteranopia, Tritanopia e Acromatopsia.
+- **Modal de degradê:** gera variações tonais programaticamente para a cor selecionada.
+- **Responsividade:** layout adaptado para diferentes tamanhos de tela.
 
-**1. Acesso Online:**
-[Projeto Gerador de cores](https://cores-gerador.netlify.app/)
+---
 
-**2. Acesso Local:**
-Para rodar o projeto localmente, siga estes passos:
+## 🧱 Tecnologias e Conceitos
 
-1.  Clone o repositório para sua máquina.
-2.  Navegue até a pasta do projeto.
-3.  Abra o arquivo `index.html` em seu navegador para começar.
+- **HTML5** — estrutura semântica da página.
+- **CSS3** — gradientes, animações (`@keyframes`), responsividade e componentes visuais.
+- **JavaScript (ES6+)** — manipulação do DOM, geração de cores, regras de contraste e persistência local.
+- **SweetAlert2** — feedback visual elegante para ações de cópia e interações.
+- **UX/UI** — foco em clareza, fluidez e interação intuitiva.
 
+---
 
-### Autor
+## 🚀 Acesso e Execução
+
+### 1) Acesso online
+
+[ClickColor (Netlify)](https://cores-gerador.netlify.app/)
+
+### 2) Execução local
+
+1. Clone este repositório.
+2. Acesse a pasta do projeto.
+3. Abra o arquivo `index.html` no navegador.
+
+---
+
+## 📁 Estrutura de Pastas
+
+```bash
+Color _Generator/
+├── index.html
+├── README.md
+└── assets/
+    ├── css/
+    │   └── style.css
+    └── js/
+        └── script.js
+```
+
+---
+
+## 👨‍💻 Autor
 
 **Patrick Souza**
-* [GitHub](https://github.com/SeuUsuario)
-* [LinkedIn](https://www.linkedin.com/in/SeuPerfil)
 
----
+- GitHub: inserir link oficial do perfil
+- LinkedIn: inserir link oficial do perfil
