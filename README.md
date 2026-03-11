@@ -46,7 +46,7 @@ Ferramenta front-end para geração e exploração de paletas de cores com foco 
 
 ### 1) Acesso online
 
-[ClickColor (Netlify)](https://cores-gerador.netlify.app/)
+[ClickColor (Netlify)]((https://clickcolors.netlify.app/))
 
 ### 2) Execução local
 
@@ -75,5 +75,5 @@ Color _Generator/
 
 **Patrick Souza**
 
-- GitHub: inserir link oficial do perfil
+- GitHub: 
 - LinkedIn: inserir link oficial do perfil
